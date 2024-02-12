@@ -5,8 +5,22 @@ local hcommandGroup = augroup('Akmyradov_hcommand', {})
 
 local M = {}
 
-M.setup = require("hcommand.setup")
 M.config = require("hcommand.config")
+
+M.setup = function ()
+    require("hcommand.keymaps")()
+
+    local file = io.open(M.config.cache, "w")
+
+    if file == nil then
+        error("Could not open file")
+        return
+    end
+
+    file:write(vim.fn.json_encode({ commands = {} }))
+
+    file:close()
+end
 
 vim.api.nvim_create_autocmd({ "BufLeave", "VimLeave" }, {
     callback = function()
