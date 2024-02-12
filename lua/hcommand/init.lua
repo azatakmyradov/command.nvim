@@ -111,7 +111,5 @@ M.execute = function (value)
     vim.cmd(':' .. commands[value])
 end
 
-M.setup()
-
 return M
 
