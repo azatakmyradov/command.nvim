@@ -17,8 +17,6 @@ M.setup = function ()
 
     local file = io.open(M.config.cache, "r")
 
-    print(M.config.cache)
-
     if file == nil then
 
         local create_file = io.open(M.config.cache, "w")
