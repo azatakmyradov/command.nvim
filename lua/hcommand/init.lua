@@ -111,5 +111,13 @@ M.execute = function (value)
     vim.cmd(':' .. commands[value])
 end
 
+M.toggle = function ()
+    if M.config.win_info.win_id == nil then
+        M.open()
+    else
+        M.close()
+    end
+end
+
 return M
 
