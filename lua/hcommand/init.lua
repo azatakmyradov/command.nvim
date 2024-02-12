@@ -7,19 +7,32 @@ local M = {}
 
 M.config = require("hcommand.config")
 
+local file_exists = function(name)
+   local f = io.open(name, "r")
+   return f ~= nil and io.close(f)
+end
+
 M.setup = function ()
     require("hcommand.keymaps")()
 
-    local file = io.open(M.config.cache, "w")
+    local file = io.open(M.config.cache, "r")
+
+    print(M.config.cache)
 
     if file == nil then
-        error("Could not open file")
-        return
+
+        local create_file = io.open(M.config.cache, "w")
+
+        if create_file == nil then
+            error("Could not create file")
+            return
+        end
+
+        create_file:write(vim.fn.json_encode({
+            commands = {}
+        }))
+        create_file:close()
     end
-
-    file:write(vim.fn.json_encode({ commands = {} }))
-
-    file:close()
 end
 
 vim.api.nvim_create_autocmd({ "BufLeave", "VimLeave" }, {
