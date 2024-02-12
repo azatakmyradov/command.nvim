@@ -1,0 +1,14 @@
+================================================================================
+                                                                 *hcommand.txt
+
+This plugin was influenced by Harpoon for nvim. It has a similar functionality
+where you can define list of commands and run it using a set of keymaps.
+
+Ex:
+<
+vim.keymap.set('n', '<leader>qe', '<cmd>lua require("hcommand").open()<cr>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>qw', '<cmd>lua require("hcommand").close()<cr>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>qr', '<cmd>lua require("hcommand").execute(1)<cr>', { noremap = true, silent = true })
+>
+
+vim:tw=78:ts=8:ft=help:norl:
