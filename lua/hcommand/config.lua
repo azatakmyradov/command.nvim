@@ -5,7 +5,7 @@ return {
         bufnr = nil
     },
     window = {
-        width = 40,
+        width = 60,
         height = 10,
         borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
     }
